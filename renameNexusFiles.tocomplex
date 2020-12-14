@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *replaceOneChar(char *s, char old, char new)
+{
+  char *p = s;
+
+  while(*p)
+  {
+    if(*p == old)
+      *p = new;
+
+    ++p;
+  }
+}
+
+	
+
+int charPosition(char* str, char c)
+{
+    char* ptr;
+    int index;
+
+    ptr = strchr(str, c);
+    if (ptr == NULL)
+    {
+        printf("Character not found\n");
+        return index;
+    }
+
+    index = ptr - str;
+
+    return index;
+}
+
+int main(argc,argv)
+int argc;
+char *argv[];
+{
+        int count,i;
+        char *holdString = argv[1];
+        char Comm[200] = "mv ";
+        char *backslash = "\\";
+        char *space = " ";
+
+        int k = charPosition(holdString,' ');
+//      printf("The index is %d\n", k);
+
+        strncpy(Comm + 3,holdString,k);
+        strcat(Comm,backslash);
+        strcat(Comm,space);
+        strcat(Comm,holdString + 11);
+        strcat(Comm,space);
+
+        replaceOneChar(holdString,' ','_');
+        strcat(Comm,holdString);
+        printf("%s",Comm);
+	printf("\n");
+
+        system(Comm);
+       
+        return 0;
+}

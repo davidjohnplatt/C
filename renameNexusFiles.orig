@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *replace(char *s, char old, char new)
+{
+  char *p = s;
+
+  while(*p)
+  {
+    if(*p == old)
+      *p = new;
+
+    ++p;
+  }
+}
+
+
+int main(argc,argv)
+int argc;
+char *argv[];
+{
+        int count;
+        char *workString = argv[1];
+        char *holdString = argv[1];
+        char Comm[80];
+
+        strcpy(Comm,"mv ");
+        strcat(Comm,holdString);
+        strcat(Comm," ");
+        printf("%s",holdString);
+	printf("\n");
+        replace(workString,' ','_');
+        printf("%s",workString);
+	printf("\n");
+        strcat(Comm,workString);
+
+        printf("%s",Comm);
+	printf("\n");
+
+        system(Comm);
+       
+        return 0;
+}
